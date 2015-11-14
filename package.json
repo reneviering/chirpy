@@ -20,6 +20,7 @@
   "dependencies": {
     "babel": "^6.1.18",
     "babel-cli": "^6.1.18",
-    "hapi": "^11.1.0"
+    "hapi": "^11.1.0",
+    "inert": "^3.2.0"
   }
 }
