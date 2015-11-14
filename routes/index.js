@@ -1,6 +1,5 @@
 'use strict';
 
-
 var React = require('react');
 var ReactDOM = require('react-dom/server');
 var ChirpyComponent = require('../app/chirpy.react.js');
@@ -12,7 +11,23 @@ module.exports = {
 	path: '/',
 	handler: (request, reply) => {
 		let renderedComponent = ReactDOM.renderToString(Chirpy({ name: "John" }));
-		var html = "<html><body><div id='content'><div>"+renderedComponent+"</div></div><script src='dist/bundle.js'></script></body></html>";
+		var html = [
+		"<!DOCTYPE html>",
+		"<html>",
+		"<head>",
+		"	<title>rv-chirpy</title>",
+		"</head>",
+		"<body>",
+		"	<div id='content'>",
+		"		<div>",
+					renderedComponent,
+		"		</div>",		
+		"	</div>",
+		"	<script src='dist/bundle.js'></script>",
+		"</body>",
+		"</html>"
+		].join("\n"); 
+
 		reply(html);
 	}
 };

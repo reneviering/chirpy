@@ -12,7 +12,10 @@ let Chirpy = React.createClass({
 	},
 
 	render() {
-		return <div onClick={this.onClick}>Click, me and i count up! (Current counter: {this.state.counter})</div>;
+		return <div>
+			<h1>Isomorphic React 4theWin!!!</h1>
+			<p onClick={this.onClick}>Click, me and i count up! (Current counter: {this.state.counter})</p>
+		</div>;
 	}
 });
 
