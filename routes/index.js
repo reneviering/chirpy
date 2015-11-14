@@ -12,7 +12,7 @@ module.exports = {
 	path: '/',
 	handler: (request, reply) => {
 		let renderedComponent = ReactDOM.renderToString(Chirpy({ name: "John" }));
-		var html = "<html><body><div id='content'>"+renderedComponent+"</div><script src='dist/bundle.js'></script></body></html>";
+		var html = "<html><body><div id='content'><div>"+renderedComponent+"</div></div><script src='dist/bundle.js'></script></body></html>";
 		reply(html);
 	}
 };
