@@ -5,8 +5,7 @@
   "description": "A simple twitterwall made with React, Flux, Node and <3",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./node_modules/.bin/babel-node index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,8 @@
   },
   "homepage": "https://github.com/revrng/chirpy#readme",
   "dependencies": {
+    "babel": "^6.1.18",
+    "babel-cli": "^6.1.18",
     "hapi": "^11.1.0"
   }
 }
