@@ -1,0 +1,23 @@
+{
+  "name": "chirpy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple twitterwall made with React, Flux, Node and <3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revrng/chirpy.git"
+  },
+  "author": "René Viering",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/revrng/chirpy/issues"
+  },
+  "homepage": "https://github.com/revrng/chirpy#readme",
+  "dependencies": {
+    "hapi": "^11.1.0"
+  }
+}
