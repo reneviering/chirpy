@@ -19781,23 +19781,42 @@
 		},
 		render: function render() {
 			var maybeImage = this.getImages();
+	
+			var twitterUserUrl = 'http://twitter.com/' + this.props.tweetData.user.screen_name;
+	
 			return React.createElement(
 				'div',
-				{ className: 'tweet' },
+				{ className: 'tweet row' },
 				React.createElement(
-					'p',
-					{ className: 'tweet__text' },
-					this.props.tweetData.text
+					'div',
+					{ className: 'col-xs-3' },
+					React.createElement('img', { className: 'tweet__userImage', src: this.props.tweetData.user.profile_image_url }),
+					React.createElement('br', null),
+					React.createElement(
+						'a',
+						{ href: twitterUserUrl },
+						'@',
+						this.props.tweetData.user.screen_name
+					)
 				),
 				React.createElement(
 					'div',
-					null,
-					this.getImages()
-				),
-				React.createElement(
-					'a',
-					{ className: 'tweet__url', href: this.getTwitterUrl(), target: '_blank' },
-					'View on twitter'
+					{ className: 'col-xs-9' },
+					React.createElement(
+						'p',
+						{ className: 'tweet__text' },
+						this.props.tweetData.text
+					),
+					React.createElement(
+						'div',
+						null,
+						this.getImages()
+					),
+					React.createElement(
+						'a',
+						{ className: 'tweet__url', href: this.getTwitterUrl(), target: '_blank' },
+						'View on twitter'
+					)
 				)
 			);
 		}
