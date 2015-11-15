@@ -14,7 +14,7 @@ server.connection({ port: process.env.PORT || 5000 });
 let twitterApi = require('./twitterApi/twitter.js');
 var io = require('socket.io')(server.listener);
 io.on('connection', (socket) => {
-    twitterApi.init(socket, 'JavaScript');
+    twitterApi.init(socket, 'JavaScript, ES2015, #gittower, reactjs, #reactjs, #reactnative, #babel, nodejs, #nodejs, #bower, bower, #npm');
 });
 
 
