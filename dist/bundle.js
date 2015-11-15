@@ -19707,11 +19707,12 @@
 	'use strict';
 	
 	var React = __webpack_require__(2);
+	var Tweet = __webpack_require__(161);
 	
 	var Chirpy = React.createClass({
 		displayName: 'Chirpy',
 		getInitialState: function getInitialState() {
-			return { counter: 0, tweets: [] };
+			return { tweets: [] };
 		},
 		componentDidMount: function componentDidMount() {
 			var _this = this;
@@ -19723,38 +19724,10 @@
 				_this.setState({ tweets: newTweets });
 			});
 		},
-		onClick: function onClick() {
-			this.setState({ counter: ++this.state.counter });
-		},
 		render: function render() {
-			var tweets = this.state.tweets.map(function (tweet, index) {
-	
-				var images = null;
-				if (tweet.entities && tweet.entities.media && tweet.entities.media.length > 0) {
-					images = tweet.entities.media.map(function (media) {
-						if (media.type === 'video') {
-							console.log(tweet, 'video');
-						}
-						return React.createElement('img', { src: media.media_url });
-					});
-				}
-	
-				var twitterUrl = "http://twitter.com/" + tweet.user.name + "/status/" + tweet.id_str;
-				return React.createElement(
-					'p',
-					{ key: index },
-					tweet.text,
-					' ',
-					React.createElement(
-						'a',
-						{ href: twitterUrl },
-						'zum Tweet'
-					),
-					' ',
-					React.createElement('br', null),
-					' ',
-					images
-				);
+			console.log('render...');
+			var tweets = this.state.tweets.map(function (tweetData, index) {
+				return React.createElement(Tweet, { key: index, tweetData: tweetData });
 			});
 	
 			return React.createElement(
@@ -19763,30 +19736,63 @@
 				React.createElement(
 					'h1',
 					null,
-					'Isomorphic React 4theWin!!!'
+					'Tweets:'
 				),
-				React.createElement(
-					'p',
-					{ onClick: this.onClick },
-					'Click, me and i count up! (Current counter: ',
-					this.state.counter,
-					')'
-				),
-				React.createElement(
-					'div',
-					null,
-					React.createElement(
-						'h1',
-						null,
-						'Tweets:'
-					),
-					tweets
-				)
+				tweets
 			);
 		}
 	});
 	
 	module.exports = Chirpy;
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(2);
+	
+	var Tweet = React.createClass({
+		displayName: 'Tweet',
+		getImages: function getImages() {
+			var data = this.props.tweetData;
+			if (typeof data === 'undefined') return null;
+			if (typeof data.entities === 'undefined') return null;
+			if (typeof data.entities.media === 'undefined') return null;
+			if (data.entities.media.length === 0) return null;
+	
+			return data.entities.media.map(function (mediaItem) {
+				return React.createElement('img', { src: mediaItem.media_url });
+			});
+		},
+		getTwitterUrl: function getTwitterUrl() {
+			return "http://twitter.com/" + this.props.tweetData.user.name + "/status/" + this.props.tweetData.id_str;
+		},
+		render: function render() {
+			var maybeImage = this.getImages();
+	
+			console.log(this.props.tweetData);
+	
+			return React.createElement(
+				'div',
+				{ className: 'tweet' },
+				React.createElement(
+					'p',
+					{ className: 'tweet__text' },
+					this.props.tweetData.text
+				),
+				this.getImages(),
+				React.createElement(
+					'a',
+					{ className: 'tweet__url', href: this.getTwitterUrl(), target: '_blank' },
+					'View on twitter'
+				)
+			);
+		}
+	});
+	
+	module.exports = Tweet;
 
 /***/ }
 /******/ ]);

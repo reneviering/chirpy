@@ -16,6 +16,7 @@ module.exports = {
 		"<html>",
 		"<head>",
 		"	<title>rv-chirpy</title>",
+		"	<link rel='stylesheet' href='node_modules/bootstrap/dist/css/bootstrap.min.css' />",
 		"</head>",
 		"<body>",
 		"	<div id='content'>",

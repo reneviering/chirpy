@@ -33,6 +33,16 @@ server.register(require('inert'), function (err) {
             reply.file('dist/bundle.js');
         }
     });
+
+    server.route({
+        method: 'GET',
+        path: '/node_modules/bootstrap/dist/css/bootstrap.min.css',
+        handler: function (request, reply) {
+            reply.file('./node_modules/bootstrap/dist/css/bootstrap.min.css');
+        }
+    });
+
+
 });
 
 server.start((err) => {
