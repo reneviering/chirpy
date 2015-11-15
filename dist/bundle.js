@@ -19727,7 +19727,7 @@
 			this.setState({ counter: ++this.state.counter });
 		},
 		render: function render() {
-			var tweets = this.state.tweets.map(function (tweet) {
+			var tweets = this.state.tweets.map(function (tweet, index) {
 	
 				var images = null;
 				if (tweet.entities && tweet.entities.media && tweet.entities.media.length > 0) {
@@ -19742,7 +19742,7 @@
 				var twitterUrl = "http://twitter.com/" + tweet.user.name + "/status/" + tweet.id_str;
 				return React.createElement(
 					'p',
-					{ key: tweet.id_str },
+					{ key: index },
 					tweet.text,
 					' ',
 					React.createElement(

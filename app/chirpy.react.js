@@ -20,7 +20,7 @@ let Chirpy = React.createClass({
 	},
 
 	render() {
-		let tweets = this.state.tweets.map((tweet) => {
+		let tweets = this.state.tweets.map((tweet ,index) => {
 
 			let images = null;
 			if(tweet.entities && 
@@ -34,7 +34,7 @@ let Chirpy = React.createClass({
 			}
 
 			let twitterUrl = "http://twitter.com/" + tweet.user.name + "/status/" + tweet.id_str;
-			return <p key={tweet.id_str}>{tweet.text} <a href={twitterUrl}>zum Tweet</a> <br/> {images}</p>;
+			return <p key={index}>{tweet.text} <a href={twitterUrl}>zum Tweet</a> <br/> {images}</p>;
 		});
 
 		return <div>
