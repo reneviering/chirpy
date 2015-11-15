@@ -13,10 +13,8 @@ server.connection({ port: process.env.PORT || 5000 });
 
 let twitterApi = require('./twitterApi/twitter.js');
 var io = require('socket.io')(server.listener);
-let sockets = [];
 io.on('connection', (socket) => {
-    sockets.push(socket);
-    twitterApi.init(sockets, 'JavaScript');
+    twitterApi.init(socket, 'JavaScript');
 });
 
 
