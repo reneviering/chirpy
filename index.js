@@ -11,12 +11,22 @@ var Hapi = require('hapi');
 var server = new Hapi.Server();
 server.connection({ port: process.env.PORT || 5000 });
 
+let twitterApi = require('./twitterApi/twitter.js');
+var io = require('socket.io')(server.listener);
+let sockets = [];
+io.on('connection', (socket) => {
+    sockets.push(socket);
+    twitterApi.init(sockets, 'JavaScript');
+});
+
+
 server.register(require('inert'), function (err) {
 	if (err) {
         throw err;
     }
 
 	server.route(require('./routes/index'));
+    server.route(require('./routes/show')(server));
 
 	server.route({
         method: 'GET',

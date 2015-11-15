@@ -12,6 +12,7 @@ module.exports = {
     plugins: [new webpack.optimize.CommonsChunkPlugin('main', null, false)],
     module: {
         noParse: [node_dir + '/react/dist/react.min.js'],
+        exclude:'/node_modules/',
         loaders: [
           {
             test: /\.js$/,
@@ -20,7 +21,8 @@ module.exports = {
                 // https://github.com/babel/babel-loader#options
                 cacheDirectory: true,
                 presets: ['es2015', 'react', 'stage-3']
-            }
+            },
+
           }
         ]
     },

@@ -23,6 +23,7 @@ module.exports = {
 					renderedComponent,
 		"		</div>",		
 		"	</div>",
+		"	<script src='https://cdn.socket.io/socket.io-1.3.7.js'></script>",
 		"	<script src='dist/bundle.js'></script>",
 		"</body>",
 		"</html>"
