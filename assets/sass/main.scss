@@ -1,0 +1,24 @@
+body {
+	background-color: white;
+	font-family: 'Raleway', sans-serif;
+}
+
+.tweet {
+	background-color: #ecf0f1;
+	border-radius: 5px;
+	margin: 20px;
+	padding: 20px;
+
+	&__text {
+		color: black;
+		font-size: 20px;
+	}
+
+	&__image {
+		border-radius: 5px;
+	}
+
+	&__url {
+		margin-top: 20px;
+	}
+}

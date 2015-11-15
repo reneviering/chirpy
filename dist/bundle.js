@@ -19720,23 +19720,33 @@
 			var socket = io();
 			socket.on('tweet', function (tweet) {
 				var newTweets = _this.state.tweets;
-				newTweets.push(tweet);
+				newTweets.unshift(tweet);
 				_this.setState({ tweets: newTweets });
 			});
 		},
 		render: function render() {
-			console.log('render...');
 			var tweets = this.state.tweets.map(function (tweetData, index) {
 				return React.createElement(Tweet, { key: index, tweetData: tweetData });
 			});
 	
 			return React.createElement(
 				'div',
-				null,
+				{ className: 'container' },
 				React.createElement(
 					'h1',
 					null,
-					'Tweets:'
+					'Chirpy'
+				),
+				React.createElement(
+					'h4',
+					null,
+					'(Twitter Streaming-API playground by ',
+					React.createElement(
+						'a',
+						{ href: 'http://twitter.com/rvrng', target: '_blank' },
+						'@rvrng'
+					),
+					')'
 				),
 				tweets
 			);
@@ -19763,7 +19773,7 @@
 			if (data.entities.media.length === 0) return null;
 	
 			return data.entities.media.map(function (mediaItem) {
-				return React.createElement('img', { src: mediaItem.media_url });
+				return React.createElement('img', { className: 'tweet__image', src: mediaItem.media_url });
 			});
 		},
 		getTwitterUrl: function getTwitterUrl() {
@@ -19771,9 +19781,6 @@
 		},
 		render: function render() {
 			var maybeImage = this.getImages();
-	
-			console.log(this.props.tweetData);
-	
 			return React.createElement(
 				'div',
 				{ className: 'tweet' },
@@ -19782,7 +19789,11 @@
 					{ className: 'tweet__text' },
 					this.props.tweetData.text
 				),
-				this.getImages(),
+				React.createElement(
+					'div',
+					null,
+					this.getImages()
+				),
 				React.createElement(
 					'a',
 					{ className: 'tweet__url', href: this.getTwitterUrl(), target: '_blank' },

@@ -12,7 +12,7 @@ let Tweet = React.createClass({
 
 
 		return data.entities.media.map((mediaItem) => {
-			return <img src={mediaItem.media_url}/>;
+			return <img className='tweet__image' src={mediaItem.media_url}/>;
 		});
 	},
 
@@ -24,7 +24,7 @@ let Tweet = React.createClass({
 		let maybeImage = this.getImages();
 		return <div className='tweet'>
 			<p className='tweet__text'>{this.props.tweetData.text}</p>
-			{this.getImages()}
+			<div>{this.getImages()}</div>
 			<a className='tweet__url' href={this.getTwitterUrl()} target='_blank'>View on twitter</a>
 		</div>;
 	}

@@ -13,7 +13,7 @@ let Chirpy = React.createClass({
 		let socket = io();
 		socket.on('tweet', (tweet) => {
 			let newTweets = this.state.tweets;
-			newTweets.push(tweet);
+			newTweets.unshift(tweet);
 			this.setState({tweets: newTweets});
 		});
 	},
@@ -23,8 +23,9 @@ let Chirpy = React.createClass({
 			return <Tweet key={index} tweetData={tweetData}/>
 		});
 
-		return <div>
-			<h1>Tweets:</h1>
+		return <div className='container'>
+			<h1>Chirpy</h1>
+			<h4>(Twitter Streaming-API playground by <a href='http://twitter.com/rvrng' target='_blank'>@rvrng</a>)</h4>
 			{tweets}
 		</div>;
 	}

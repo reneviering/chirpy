@@ -17,6 +17,8 @@ module.exports = {
 		"<head>",
 		"	<title>rv-chirpy</title>",
 		"	<link rel='stylesheet' href='node_modules/bootstrap/dist/css/bootstrap.min.css' />",
+		"	<link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>",
+		"	<link rel='stylesheet' href='dist/main.css' />",
 		"</head>",
 		"<body>",
 		"	<div id='content'>",

@@ -14,7 +14,7 @@ server.connection({ port: process.env.PORT || 5000 });
 let twitterApi = require('./twitterApi/twitter.js');
 var io = require('socket.io')(server.listener);
 io.on('connection', (socket) => {
-    twitterApi.init(socket, 'JavaScript, ES2015, #gittower, reactjs, #reactjs, #reactnative, #babel, nodejs, #nodejs, #bower, bower, #npm');
+    twitterApi.init(socket, 'JavaScript, ES2015, #gittower, reactjs, #reactjs, #reactnative, #babel, nodejs, #nodejs, #bower, #npm, @sketchapp, Bootstrap');
 });
 
 
@@ -31,6 +31,14 @@ server.register(require('inert'), function (err) {
         path: '/dist/bundle.js',
         handler: function (request, reply) {
             reply.file('dist/bundle.js');
+        }
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/dist/main.css',
+        handler: function (request, reply) {
+            reply.file('dist/main.css');
         }
     });
 
