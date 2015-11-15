@@ -6,7 +6,7 @@ let Twit = require('twit');
 
 let _searchTerm = "JavaScript";
 
-let _init = (sockets) => {
+let _init = (socket) => {
 	let T = new Twit({
 	    consumer_key: process.env.CONSUMER_KEY,
 	  	consumer_secret: process.env.CONSUMER_SECRET,
@@ -16,9 +16,7 @@ let _init = (sockets) => {
 
 	var stream = T.stream('statuses/filter', { track: _searchTerm });
 	stream.on('tweet', function (tweet) {
-	  sockets.forEach((socket) => {
-	  	socket.emit('tweet', tweet);
-	  });
+		socket.broadcast.emit('tweet', tweet);
 	});
 };
 
