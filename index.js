@@ -13,8 +13,12 @@ server.connection({ port: process.env.PORT || 5000 });
 
 let twitterApi = require('./twitterApi/twitter.js');
 var io = require('socket.io')(server.listener);
+let _socket = null;
 io.on('connection', (socket) => {
-    twitterApi.init(socket, 'JavaScript, ES2015, #gittower, reactjs, #reactjs, #reactnative, #babel, nodejs, #nodejs, #bower, #npm, @sketchapp, Bootstrap');
+    if(_socket === null) {
+        _socket = socket;
+        twitterApi.init(socket, 'JavaScript, ES2015, #gittower, reactjs, #reactjs, #reactnative, #babel, nodejs, #nodejs, #bower, #npm, @sketchapp, Bootstrap');    
+    }
 });
 
 
