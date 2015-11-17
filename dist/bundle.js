@@ -19719,6 +19719,7 @@
 	
 			var socket = io();
 			socket.on('tweet', function (tweet) {
+				console.log(tweet);
 				var newTweets = _this.state.tweets;
 				newTweets.unshift(tweet);
 				_this.setState({ tweets: newTweets });

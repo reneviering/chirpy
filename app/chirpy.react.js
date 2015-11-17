@@ -12,6 +12,7 @@ let Chirpy = React.createClass({
 	componentDidMount() {
 		let socket = io();
 		socket.on('tweet', (tweet) => {
+			console.log(tweet);
 			let newTweets = this.state.tweets;
 			newTweets.unshift(tweet);
 			this.setState({tweets: newTweets});
