@@ -17,7 +17,7 @@ let _socket = null;
 io.on('connection', (socket) => {
     if(_socket === null) {
         _socket = socket;
-        twitterApi.init(socket, 'Buildstuff, #buildstufflt');    
+        twitterApi.init(socket, 'JavaScript, ES2015, #gittower, reactjs, #reactjs, #reactnative, #babel, nodejs, #nodejs, #bower, #npm, @sketchapp, Bootstrap');    
     }
 });
 
